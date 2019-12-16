@@ -16,7 +16,7 @@ export class ShoppingListService {
 
   addIngredient(ingr: Ingerdient) {
     let found = false;
-    for (let ingredient of this.ingredients) {
+    for (const ingredient of this.ingredients) {
       if (ingredient.name === ingr.name) {
         // tslint:disable-next-line: radix
         ingredient.amount = ingredient.amount + parseInt(ingr.amount.toString());

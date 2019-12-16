@@ -1,3 +1,4 @@
+import { RecipeService } from './../../recipe.service';
 import { Recipe } from './../../recipe.model';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -7,11 +8,13 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./recipe-item.component.css']
 })
 export class RecipeItemComponent implements OnInit {
-  @Input() recipe: Recipe;
+  @Input() recipeId: number;
+  recipe: Recipe;
 
-  constructor() { }
+  constructor(private resService: RecipeService) { }
 
   ngOnInit() {
+    this.recipe = this.resService.getRecipeById(+this.recipeId);
   }
 
 }

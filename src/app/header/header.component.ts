@@ -6,16 +6,11 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  @Output() menu = new EventEmitter<string>();
   collapsed = true;
 
   constructor() { }
 
   ngOnInit() {
-  }
-
-  onClick(element: string) {
-    this.menu.emit(element);
   }
 
 }

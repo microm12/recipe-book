@@ -22,8 +22,12 @@
         <li>
           <a style="cursor: pointer;" (click)="onAddIngr()">Add Ingredients</a>
         </li>
-        <li><a href="#">Edit Recipe</a></li>
-        <li><a href="#">Delete Recipe</a></li>
+        <li>
+          <a style="cursor: pointer;" [routerLink]="['/recipes', recId, 'edit']"
+            >Edit Recipe</a
+          >
+        </li>
+        <li><a style="cursor: pointer;">Delete Recipe</a></li>
       </ul>
     </div>
   </div>

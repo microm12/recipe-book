@@ -3,12 +3,6 @@
     <app-recipe-list></app-recipe-list>
   </div>
   <div class="col-md-7">
-    <app-recipe-detail
-      *ngIf="recipe; else placeholder"
-      [inRecipe]="recipe"
-    ></app-recipe-detail>
-    <ng-template #placeholder>
-      <p>Please Select a Recipe in order to view it's details.</p>
-    </ng-template>
+    <router-outlet></router-outlet>
   </div>
 </div>
