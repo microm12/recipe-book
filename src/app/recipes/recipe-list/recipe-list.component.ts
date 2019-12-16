@@ -16,8 +16,4 @@ export class RecipeListComponent implements OnInit {
     this.recipes = this.resService.getRecipes();
   }
 
-  recipeEvent(recipe: Recipe) {
-    this.resService.selectedRecipe.emit(recipe);
-  }
-
 }

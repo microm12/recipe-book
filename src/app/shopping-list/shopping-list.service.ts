@@ -1,8 +1,9 @@
 import { Ingerdient } from '../shared/ingredient.model';
-import { EventEmitter } from '@angular/core';
+import { Subject } from 'rxjs';
+
 
 export class ShoppingListService {
-  onChange = new EventEmitter<Ingerdient[]>();
+  onChange = new Subject<Ingerdient[]>();
   private ingredients: Ingerdient[] = [
     new Ingerdient('Tomatoes', 2),
     new Ingerdient('Meat', 1)
@@ -21,12 +22,12 @@ export class ShoppingListService {
         // tslint:disable-next-line: radix
         ingredient.amount = ingredient.amount + parseInt(ingr.amount.toString());
         found = true;
-        this.onChange.emit(this.ingredients.slice());
+        this.onChange.next(this.ingredients.slice());
       }
     }
     if (!found) {
       this.ingredients.push(ingr);
-      this.onChange.emit(this.ingredients.slice());
+      this.onChange.next(this.ingredients.slice());
     }
 
   }
