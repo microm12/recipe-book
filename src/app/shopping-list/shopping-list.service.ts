@@ -41,7 +41,7 @@ export class ShoppingListService {
   updateIngedient(index: number, newIngr: Ingerdient) {
     let found = false;
     for (const ingredient of this.ingredients) {
-      if (ingredient.name === newIngr.name) {
+      if (ingredient.name === newIngr.name && this.ingredients.indexOf(ingredient) !== index) {
         ingredient.amount = ingredient.amount + newIngr.amount;
         this.ingredients.splice(index, 1);
         found = true;
