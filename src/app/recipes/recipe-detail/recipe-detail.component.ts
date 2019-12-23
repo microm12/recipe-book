@@ -1,8 +1,11 @@
+import { Ingerdient } from './../../shared/ingredient.model';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Recipe } from './../recipe.model';
 import { Component, OnInit } from '@angular/core';
-import { ShoppingListService } from 'src/app/shopping-list/shopping-list.service';
 import { RecipeService } from '../recipe.service';
+import { Store } from '@ngrx/store';
+import { AddIngredient } from 'src/app/shopping-list/store/shopping-list.actions';
+import * as fromShoppingList from 'src/app/shopping-list/store/shopping-list.reducer';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -12,7 +15,7 @@ import { RecipeService } from '../recipe.service';
 export class RecipeDetailComponent implements OnInit {
   inRecipe: Recipe;
   recId: number;
-  constructor(private shoppingService: ShoppingListService,
+  constructor(private store: Store<fromShoppingList.AppState>,
     private recipeService: RecipeService,
     private route: ActivatedRoute,
     private router: Router) { }
@@ -28,9 +31,9 @@ export class RecipeDetailComponent implements OnInit {
     // create a deep copy of the ingredient array so the value amount
     // does't change in the recipe service
     const ingredients = JSON.parse(JSON.stringify(this.inRecipe.ingredients));
-    for (let ingredient of ingredients) {
-      this.shoppingService.addIngredient(ingredient);
-    }
+    ingredients.forEach((ingredient: Ingerdient) => {
+      this.store.dispatch(new AddIngredient(ingredient));
+    });
   }
 
   onDelete() {
