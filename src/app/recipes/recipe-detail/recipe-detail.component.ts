@@ -6,6 +6,7 @@ import { RecipeService } from '../recipe.service';
 import { Store } from '@ngrx/store';
 import { AddIngredient } from 'src/app/shopping-list/store/shopping-list.actions';
 import * as fromShoppingList from 'src/app/shopping-list/store/shopping-list.reducer';
+import * as fromApp from '../../store/app.reducer';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -15,7 +16,7 @@ import * as fromShoppingList from 'src/app/shopping-list/store/shopping-list.red
 export class RecipeDetailComponent implements OnInit {
   inRecipe: Recipe;
   recId: number;
-  constructor(private store: Store<fromShoppingList.AppState>,
+  constructor(private store: Store<fromApp.AppState>,
     private recipeService: RecipeService,
     private route: ActivatedRoute,
     private router: Router) { }
